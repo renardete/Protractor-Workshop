@@ -1,0 +1,34 @@
+{
+  "name": "workshop-protractor",
+  "version": "1.0.0",
+  "description": "This is Workshop about Protractor",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc",
+    "test": "npm run build && protractor dist/protractor/local.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renardete/PSL-Protractor-Workshop.git"
+  },
+  "keywords": [
+    "ui-testing",
+    "dojo",
+    "practice",
+    "protractor"
+  ],
+  "author": "[Juan Reyes] <juan.felipe.reyesg@gmail.com> ([https://github.com/renardete])",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/renardete/PSL-Protractor-Workshop/issues"
+  },
+  "homepage": "https://github.com/renardete/PSL-Protractor-Workshop#readme",
+  "devDependencies": {
+    "@types/jasminewd2": "^2.0.6",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "@types/node": "^11.13.7"
+  }
+}
