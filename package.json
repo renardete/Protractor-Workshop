@@ -26,6 +26,7 @@
   "homepage": "https://github.com/renardete/PSL-Protractor-Workshop#readme",
   "devDependencies": {
     "@types/jasminewd2": "^2.0.6",
+    "jasmine-spec-reporter": "^4.2.1",
     "typescript": "^3.4.5"
   },
   "dependencies": {
