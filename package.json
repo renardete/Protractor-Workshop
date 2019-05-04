@@ -31,12 +31,12 @@
   "devDependencies": {
     "@types/jasminewd2": "^2.0.6",
     "jasmine-spec-reporter": "^4.2.1",
+    "tslint": "^5.16.0",
+    "tslint-config-airbnb": "^5.11.1",
     "typescript": "^3.4.5"
   },
   "dependencies": {
     "@types/node": "^11.13.7",
-    "protractor": "^5.4.2",
-    "tslint": "^5.16.0",
-    "tslint-config-airbnb": "^5.11.1"
+    "protractor": "^5.4.2"
   }
 }
