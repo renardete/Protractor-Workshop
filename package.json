@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "rd /s /q dist",
     "build": "npm run clean && tsc",
-    "test": "npm run build && protractor dist/protractor/local.config.js"
+    "test:local": "npm run build && protractor dist/protractor/local.config.js",
+    "test:headless": "npm run build && protractor dist/protractor/headless.config.js"
   },
   "repository": {
     "type": "git",
@@ -26,11 +27,11 @@
   "homepage": "https://github.com/renardete/PSL-Protractor-Workshop#readme",
   "devDependencies": {
     "@types/jasminewd2": "^2.0.6",
+    "jasmine-spec-reporter": "^4.2.1",
     "typescript": "^3.4.5"
   },
   "dependencies": {
-    "@types/node": "^11.13.10",
-    "jasmine-spec-reporter": "^4.2.1",
+    "@types/node": "^11.13.7",
     "protractor": "^5.4.2"
   }
 }
