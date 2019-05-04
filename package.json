@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@types/node": "^11.13.10",
+    "jasmine-spec-reporter": "^4.2.1",
     "protractor": "^5.4.2"
   }
 }
