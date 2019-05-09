@@ -15,4 +15,5 @@ export const config: Config = {
       args: ['--headless', '--disable-gpu']
     }
   }
+
 };
