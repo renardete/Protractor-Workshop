@@ -3,7 +3,7 @@ import { reporter } from './helpers/reporter';
 
 export const config: Config = {
   framework: 'jasmine',
-  specs: [ '../test/google.spec.js' ],
+  specs: ['../test/google.spec.js'],
   SELENIUM_PROMISE_MANAGER: false,
   onPrepare: () => {
     browser.ignoreSynchronization = true;
@@ -15,4 +15,5 @@ export const config: Config = {
       args: ['--headless', '--disable-gpu']
     }
   }
+
 };
