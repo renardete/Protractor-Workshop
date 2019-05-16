@@ -12,7 +12,6 @@
     "postinstall": "webdriver-manager update --gecko false",
     "lint": "tslint --project tsconfig.json protractor/**/*.ts test/**/*.ts src/**/*.ts"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/renardete/PSL-Protractor-Workshop.git"
