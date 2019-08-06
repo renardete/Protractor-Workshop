@@ -1,5 +1,7 @@
-import { $, browser } from 'protractor';
-import { MenuContentPage, ProductList, ProductAddedModal, SummaryStep, SignInStep, AddresStep } from '../src/page';
+import { browser } from 'protractor';
+import { MenuContentPage, ProductList, ProductAddedModal,
+   SummaryStep, SignInStep, AddresStep, ShippingStep,
+   BankPayment, PaymentStep, OrderSummary } from '../src/page';
 
 describe('Buy a t-shirt', () => {
   const menuContentPage: MenuContentPage = new MenuContentPage();
@@ -8,6 +10,10 @@ describe('Buy a t-shirt', () => {
   const summaryStep: SummaryStep = new SummaryStep();
   const signInStep: SignInStep = new SignInStep();
   const addresStep: AddresStep = new AddresStep();
+  const shippingStep: ShippingStep = new ShippingStep();
+  const paymentStep: PaymentStep = new PaymentStep();
+  const bankPayment: BankPayment = new BankPayment();
+  const orderSummary: OrderSummary = new OrderSummary();
 
   beforeEach(() => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
@@ -33,17 +39,17 @@ describe('Buy a t-shirt', () => {
     await addresStep.goToShippingStep();
     await(browser.sleep(3000));
 
-    await $('#cgv').click();
+    await shippingStep.acceptAgrements();
     await(browser.sleep(3000));
 
-    await $('#form > p > button > span').click();
+    await shippingStep.goToPaymentStep();
     await(browser.sleep(3000));
-    await $('#HOOK_PAYMENT > div:nth-child(1) > div > p > a').click();
+    await paymentStep.goToBankPayment();
     await(browser.sleep(3000));
-    await $('#cart_navigation > button > span').click();
+    await bankPayment.goToOrderSummary();
     await(browser.sleep(3000));
 
-    await expect($('#center_column > div > p > strong').getText())
+    await expect(await orderSummary.getOrderSummaryReportTitle())
       .toBe('Your order on My Store is complete.');
   });
 });
