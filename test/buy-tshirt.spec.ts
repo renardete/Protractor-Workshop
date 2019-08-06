@@ -1,8 +1,13 @@
 import { $, browser } from 'protractor';
-import { MenuContentPage } from '../src/page';
+import { MenuContentPage, ProductList, ProductAddedModal, SummaryStep, SignInStep, AddresStep } from '../src/page';
 
 describe('Buy a t-shirt', () => {
   const menuContentPage: MenuContentPage = new MenuContentPage();
+  const productListPage: ProductList = new ProductList();
+  const productAddedModal: ProductAddedModal = new ProductAddedModal();
+  const summaryStep: SummaryStep = new SummaryStep();
+  const signInStep: SignInStep = new SignInStep();
+  const addresStep: AddresStep = new AddresStep();
 
   beforeEach(() => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
@@ -13,19 +18,19 @@ describe('Buy a t-shirt', () => {
     await(browser.sleep(10000));
     await menuContentPage.goToTShirtMenu();
     await(browser.sleep(3000));
-    await $('#center_column a.button.ajax_add_to_cart_button.btn.btn-default').click();
+    await productListPage.goToProductAddedModal();
     await(browser.sleep(3000));
-    await $('[style*="display: block;"] .button-container > a').click();
+    await productAddedModal.goToSummaryStep();
     await(browser.sleep(3000));
-    await $('.cart_navigation span').click();
-    await(browser.sleep(3000));
-
-    await $('#email').sendKeys('aperdomobo@gmail.com');
-    await $('#passwd').sendKeys('WorkshopProtractor');
-    await $('#SubmitLogin > span').click();
+    await summaryStep.goToSigninStep();
     await(browser.sleep(3000));
 
-    await $('#center_column > form > p > button > span').click();
+    await signInStep.insertUserEmail('aperdomobo@gmail.com');
+    await signInStep.insertUserPasswd('WorkshopProtractor');
+    await signInStep.goToAddresStep();
+    await(browser.sleep(3000));
+
+    await addresStep.goToShippingStep();
     await(browser.sleep(3000));
 
     await $('#cgv').click();
