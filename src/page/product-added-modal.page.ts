@@ -1,7 +1,7 @@
 import { $, ElementFinder } from 'protractor';
 
 export class ProductAddedModal {
-  private proceedToCheckoutButton: ElementFinder;
+  public proceedToCheckoutButton: ElementFinder;
 
   constructor () {
     this.proceedToCheckoutButton = $('[style*="display: block;"] .button-container > a');
@@ -10,4 +10,5 @@ export class ProductAddedModal {
   public async goToSummaryStep(): Promise<void> {
     await this.proceedToCheckoutButton.click();
   }
+
 }

@@ -1,4 +1,4 @@
-import { browser } from 'protractor';
+import { browser, ExpectedConditions } from 'protractor';
 import {
   MenuContentPage, ProductList, ProductAddedModal,
   SummaryStep, SignInStep, AddresStep, ShippingStep,
@@ -23,6 +23,8 @@ describe('Given the automation web UI is available', () => {
       await browser.get('http://automationpractice.com/');
       await menuContentPage.goToTShirtMenu();
       await productListPage.goToProductAddedModal();
+      await browser.wait(ExpectedConditions
+        .elementToBeClickable(productAddedModal.proceedToCheckoutButton));
       await productAddedModal.goToSummaryStep();
       await summaryStep.goToSigninStep();
 
