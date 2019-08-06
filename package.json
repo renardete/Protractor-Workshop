@@ -9,7 +9,7 @@
     "test:local": "npm run build && protractor dist/protractor/local.config.js",
     "test:headless": "npm run build && protractor dist/protractor/headless.config.js",
     "test": "npm run test:headless",
-    "postinstall": "webdriver-manager update --gecko false",
+    "postinstall": "webdriver-manager update --versions.chrome 76.0.3809.87 --gecko false",
     "lint": "tslint --project tsconfig.json protractor/**/*.ts test/**/*.ts src/**/*.ts"
   },
   "repository": {
@@ -31,12 +31,12 @@
   "devDependencies": {
     "@types/jasminewd2": "^2.0.6",
     "jasmine-spec-reporter": "^4.2.1",
-    "tslint": "^5.16.0",
+    "tslint": "^5.18.0",
     "tslint-config-airbnb": "^5.11.1",
-    "typescript": "^3.4.5"
+    "typescript": "^3.5.3"
   },
   "dependencies": {
-    "@types/node": "^11.13.7",
+    "@types/node": "^11.13.18",
     "protractor": "^5.4.2"
   }
 }

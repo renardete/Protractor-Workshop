@@ -1,41 +1,60 @@
-import { $, browser } from 'protractor';
+import { browser } from 'protractor';
+import {
+  MenuContentPage, ProductList, ProductAddedModal,
+  SummaryStep, SignInStep, AddresStep, ShippingStep,
+  BankPayment, PaymentStep, OrderSummary
+} from '../src/page';
 
-describe('Buy a t-shirt', () => {
-  beforeEach(() => {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
-  });
+describe('Given the automation web UI is available', () => {
 
-  it('then should be bought a t-shirt', async () => {
-    await browser.get('http://automationpractice.com/');
-    await(browser.sleep(10000));
-    await $('#block_top_menu > ul > li:nth-child(3) > a').click();
-    await(browser.sleep(3000));
-    await $('#center_column a.button.ajax_add_to_cart_button.btn.btn-default').click();
-    await(browser.sleep(3000));
-    await $('[style*="display: block;"] .button-container > a').click();
-    await(browser.sleep(3000));
-    await $('.cart_navigation span').click();
-    await(browser.sleep(3000));
+  describe('when the user is going to buy a t-shirt', () => {
+    const menuContentPage: MenuContentPage = new MenuContentPage();
+    const productListPage: ProductList = new ProductList();
+    const productAddedModal: ProductAddedModal = new ProductAddedModal();
+    const summaryStep: SummaryStep = new SummaryStep();
+    const signInStep: SignInStep = new SignInStep();
+    const addresStep: AddresStep = new AddresStep();
+    const shippingStep: ShippingStep = new ShippingStep();
+    const paymentStep: PaymentStep = new PaymentStep();
+    const bankPayment: BankPayment = new BankPayment();
+    const orderSummary: OrderSummary = new OrderSummary();
 
-    await $('#email').sendKeys('aperdomobo@gmail.com');
-    await $('#passwd').sendKeys('WorkshopProtractor');
-    await $('#SubmitLogin > span').click();
-    await(browser.sleep(3000));
+    beforeEach(() => {
+      jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
+    });
 
-    await $('#center_column > form > p > button > span').click();
-    await(browser.sleep(3000));
+    it('then should be bought a t-shirt', async () => {
+      await browser.get('http://automationpractice.com/');
+      await (browser.sleep(10000));
+      await menuContentPage.goToTShirtMenu();
+      await (browser.sleep(3000));
+      await productListPage.goToProductAddedModal();
+      await (browser.sleep(3000));
+      await productAddedModal.goToSummaryStep();
+      await (browser.sleep(3000));
+      await summaryStep.goToSigninStep();
+      await (browser.sleep(3000));
 
-    await $('#cgv').click();
-    await(browser.sleep(3000));
+      await signInStep.insertUserEmail('aperdomobo@gmail.com');
+      await signInStep.insertUserPasswd('WorkshopProtractor');
+      await signInStep.goToAddresStep();
+      await (browser.sleep(3000));
 
-    await $('#form > p > button > span').click();
-    await(browser.sleep(3000));
-    await $('#HOOK_PAYMENT > div:nth-child(1) > div > p > a').click();
-    await(browser.sleep(3000));
-    await $('#cart_navigation > button > span').click();
-    await(browser.sleep(3000));
+      await addresStep.goToShippingStep();
+      await (browser.sleep(3000));
 
-    await expect($('#center_column > div > p > strong').getText())
-      .toBe('Your order on My Store is complete.');
+      await shippingStep.acceptAgrements();
+      await (browser.sleep(3000));
+
+      await shippingStep.goToPaymentStep();
+      await (browser.sleep(3000));
+      await paymentStep.goToBankPayment();
+      await (browser.sleep(3000));
+      await bankPayment.goToOrderSummary();
+      await (browser.sleep(3000));
+
+      await expect(await orderSummary.getOrderSummaryReportTitle())
+        .toBe('Your order on My Store is complete.');
+    });
   });
 });
