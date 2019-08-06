@@ -21,33 +21,22 @@ describe('Given the automation web UI is available', () => {
 
     it('then should be bought a t-shirt', async () => {
       await browser.get('http://automationpractice.com/');
-      await (browser.sleep(10000));
       await menuContentPage.goToTShirtMenu();
-      await (browser.sleep(3000));
       await productListPage.goToProductAddedModal();
-      await (browser.sleep(3000));
       await productAddedModal.goToSummaryStep();
-      await (browser.sleep(3000));
       await summaryStep.goToSigninStep();
-      await (browser.sleep(3000));
 
       await signInStep.insertUserEmail('aperdomobo@gmail.com');
       await signInStep.insertUserPasswd('WorkshopProtractor');
       await signInStep.goToAddresStep();
-      await (browser.sleep(3000));
 
       await addresStep.goToShippingStep();
-      await (browser.sleep(3000));
 
       await shippingStep.acceptAgrements();
-      await (browser.sleep(3000));
 
       await shippingStep.goToPaymentStep();
-      await (browser.sleep(3000));
       await paymentStep.goToBankPayment();
-      await (browser.sleep(3000));
       await bankPayment.goToOrderSummary();
-      await (browser.sleep(3000));
 
       await expect(await orderSummary.getOrderSummaryReportTitle())
         .toBe('Your order on My Store is complete.');
