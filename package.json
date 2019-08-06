@@ -37,7 +37,6 @@
   },
   "dependencies": {
     "@types/node": "^11.13.18",
-    "protractor": "^5.4.2",
-    "selenium-webdriver": "^4.0.0-alpha.4"
+    "protractor": "^5.4.2"
   }
 }
