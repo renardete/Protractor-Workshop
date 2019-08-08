@@ -1,8 +1,7 @@
 import { $, ElementFinder } from 'protractor';
-import { ExplicitWaits } from '../utils/index';
+import { waitIsClickable } from '../utils/index';
 
 export class ProductAddedModal {
-  private explicitWaits: ExplicitWaits = new ExplicitWaits();
   public proceedToCheckoutButton: ElementFinder;
 
   constructor () {
@@ -10,7 +9,7 @@ export class ProductAddedModal {
   }
 
   public async goToSummaryStep(): Promise<void> {
-    await this.explicitWaits.waitIsClickable(this.proceedToCheckoutButton);
+    await waitIsClickable(this.proceedToCheckoutButton);
     await this.proceedToCheckoutButton.click();
   }
 

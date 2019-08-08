@@ -1,1 +1,1 @@
-export { ExplicitWaits } from './waits';
+export { waitIsClickable } from './waits';
