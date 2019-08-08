@@ -22,6 +22,8 @@ describe('Given the automation web UI is available', () => {
     it('then should be bought a t-shirt', async () => {
       await browser.get('http://automationpractice.com/');
       await menuContentPage.goToTShirtMenu();
+      await browser.wait(ExpectedConditions
+        .elementToBeClickable(productListPage.addToCartButton));
       await productListPage.goToProductAddedModal();
       await browser.wait(ExpectedConditions
         .elementToBeClickable(productAddedModal.proceedToCheckoutButton));
