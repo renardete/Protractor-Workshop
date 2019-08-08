@@ -4,7 +4,6 @@ import {
   SummaryStep, SignInStep, AddresStep, ShippingStep,
   BankPayment, PaymentStep, OrderSummary
 } from '../src/page';
-import { ExplicitWaits } from '../src/utils';
 
 describe('Given the automation web UI is available', () => {
 
@@ -20,14 +19,10 @@ describe('Given the automation web UI is available', () => {
     const bankPayment: BankPayment = new BankPayment();
     const orderSummary: OrderSummary = new OrderSummary();
 
-    const explicitWaits: ExplicitWaits = new ExplicitWaits();
-
     it('then should be bought a t-shirt', async () => {
       await browser.get('http://automationpractice.com/');
       await menuContentPage.goToTShirtMenu();
-      await explicitWaits.waitIsClickable(productListPage.addToCartButton);
       await productListPage.goToProductAddedModal();
-      await explicitWaits.waitIsClickable(productAddedModal.proceedToCheckoutButton);
       await productAddedModal.goToSummaryStep();
       await summaryStep.goToSigninStep();
 
